@@ -22,8 +22,9 @@ public class VentanaCliente extends javax.swing.JFrame {
     Cliente cliente;
     
     public VentanaCliente() {
-        initComponents();
+        
         cliente= new Cliente(areaMsj);
+        
         Thread hilo = new Thread(cliente);
         hilo.start();
         
