@@ -24,10 +24,7 @@ public class NewUser extends javax.swing.JFrame {
     
     public NewUser() {
         initComponents();
-        //this.controlVentana= new ControlVentanaPrincipal();
-        //cliente= new Cliente(peMsg);
-        Thread hilo = new Thread((Runnable) cliente);
-        hilo.start();
+        
     }
 
   
@@ -40,13 +37,14 @@ public class NewUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jtNombreUs = new javax.swing.JTextField();
+        jtPuerto = new javax.swing.JTextField();
+        jtIp = new javax.swing.JTextField();
+        jbCrearUs = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,14 +55,19 @@ public class NewUser extends javax.swing.JFrame {
 
         jLabel3.setText("Dirección IP:");
 
-        jTextField1.setText("      ");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtNombreUs.setText("      ");
+        jtNombreUs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtNombreUsActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Crear Usuario");
+        jbCrearUs.setText("Crear Usuario");
+        jbCrearUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCrearUsActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial Unicode MS", 1, 12)); // NOI18N
         jLabel6.setText("Nuevo Usuario");
@@ -78,7 +81,7 @@ public class NewUser extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(jbCrearUs)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
@@ -86,9 +89,9 @@ public class NewUser extends javax.swing.JFrame {
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3)))))
+                                    .addComponent(jtNombreUs, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(jtPuerto)
+                                    .addComponent(jtIp)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jLabel6)))
@@ -102,26 +105,30 @@ public class NewUser extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtNombreUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtIp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(jButton1)
+                .addComponent(jbCrearUs)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtNombreUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreUsActionPerformed
         // nombre del usuario a conectar
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtNombreUsActionPerformed
+
+    private void jbCrearUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearUsActionPerformed
+        
+    }//GEN-LAST:event_jbCrearUsActionPerformed
 
     
      
@@ -160,24 +167,24 @@ public class NewUser extends javax.swing.JFrame {
             }
         });
     }
-   /* public String getText()
+    public String getText()
     {
-        return this.jTextField1.getText();
+        return this.jtNombreUs.getText();
     }
     public void setText(String p)
     {
-        this.jTextField1.setText(p);
+        this.jtNombreUs.setText(p);
     }
-*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jbCrearUs;
+    private javax.swing.JTextField jtIp;
+    private javax.swing.JTextField jtNombreUs;
+    private javax.swing.JTextField jtPuerto;
     // End of variables declaration//GEN-END:variables
 }

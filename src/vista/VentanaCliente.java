@@ -1,60 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
+
 
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import javax.swing.ScrollPaneConstants;
 import modelo.Cliente;
 
 /**
  *
- * @author Ariel
+ * @author Luis Enrique
  */
 public class VentanaCliente extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VentanaCliente
-     */
     
-    Cliente cliente;
-    
-    public VentanaCliente() {
-        
-        cliente= new Cliente(areaMsj);
-        
+    private Cliente cliente;
+    private String chat, dato;
+    String[] lista;
+    public VentanaCliente(String miChat) {
+        initComponents();
+        chat=miChat;
+        lista=chat.split(",");
+        cliente= new Cliente(peMsg, chat);
         Thread hilo = new Thread(cliente);
         hilo.start();
         
-    
-        jScrollPane1.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {  
         
-        public void adjustmentValueChanged(AdjustmentEvent e) {  
+        jScrollPane1.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {  
+            public void adjustmentValueChanged(AdjustmentEvent e) {  
                 e.getAdjustable().setValue(e.getAdjustable().getMaximum());  
             }
         });
-        }
-    
-
-    private void botonActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        
-        String areaMsj = txMsg.getText();
-        if(nombre.trim().length() == 0)
-            cliente.enviarMsj(return;
-        
-        txMsg.setText("");
-        
-       cliente.enviarMsg(/*falta adherir nombre*/ ":</strong> "+areaMsj+"<br>");
     }
-    
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaCliente().setVisible(true);
-            }
-        });
-}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,81 +40,72 @@ public class VentanaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        areaMsj = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        boton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        peMsg = new javax.swing.JEditorPane();
+        jLabel1 = new javax.swing.JLabel();
+        jtMensajeEnv = new javax.swing.JTextField();
+        jbEnviar = new javax.swing.JButton();
+        jtNombreChat = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 36)); // NOI18N
-        jLabel1.setText("El Chat Místico v1.0");
+        peMsg.setContentType("text/html"); // NOI18N
+        jScrollPane1.setViewportView(peMsg);
+        peMsg.getAccessibleContext().setAccessibleDescription("text/plain");
 
-        areaMsj.setColumns(20);
-        areaMsj.setRows(5);
-        jScrollPane1.setViewportView(areaMsj);
+        jLabel1.setText("Mensaje:");
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
-        jLabel2.setText("Su mensaje:");
+        jbEnviar.setText("Enviar");
+        jbEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEnviarActionPerformed(evt);
+            }
+        });
 
-        boton.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        boton.setText("Enviar");
-
-        jLabel4.setText("WhatsApp se basó de esta app para crear la de ellos.");
+        jtNombreChat.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jtMensajeEnv, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(boton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(121, 121, 121))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(66, 66, 66)))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(jtNombreChat, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jtNombreChat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(49, 49, 49))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jtMensajeEnv, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEnviarActionPerformed
+        setNombreChat();
+        enviar();
+    }//GEN-LAST:event_jbEnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,27 +133,33 @@ public class VentanaCliente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VentanaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            
-        public void run() {
-                new VentanaCliente().setVisible(true);
+            public void run() {
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaMsj;
-    private javax.swing.JButton boton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbEnviar;
+    private javax.swing.JTextField jtMensajeEnv;
+    private javax.swing.JTextField jtNombreChat;
+    private javax.swing.JEditorPane peMsg;
     // End of variables declaration//GEN-END:variables
     
+    public void setNombreChat()
+    {
+        this.jtNombreChat.setText(lista[0]);
+    }
+    public void enviar()
+    {
+        cliente.enviarMsj(this.jtNombreChat.getText()+", <"+this.jtMensajeEnv.getText()+">");
+    }
+    
+
 }
+
