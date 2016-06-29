@@ -23,7 +23,7 @@ public class Cliente implements Runnable{
     private DataInputStream in;
     private DataOutputStream out;
     private int port= 2030;
-    private String host = "192.168.0.11";
+    private String host;
     private String mensajes = "";
     private String chat;
     JEditorPane panel;
@@ -57,13 +57,9 @@ public class Cliente implements Runnable{
                     panel.setText(mensajes);
                     lista=null;
                 }
-                else
-                {
-                    lista.add(mensajes);
-                }
             }
         }catch(Exception e){
-            e.printStackTrace();
+            lista.add(mensajes);
         }
     }
         

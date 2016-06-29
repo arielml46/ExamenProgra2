@@ -5,9 +5,8 @@
  */
 package vista;
 
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import modelo.Cliente;
+
+
 
 /**
  *
@@ -18,10 +17,8 @@ public class NewUser extends javax.swing.JFrame {
     /**
      * Creates new form Chat
      */
-    
-    Cliente cliente;
-    //private final ControlVentanaPrincipal controlVentana; 
-    
+    private NewChat newChat;
+    private String chat;
     public NewUser() {
         initComponents();
         
@@ -127,7 +124,7 @@ public class NewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jtNombreUsActionPerformed
 
     private void jbCrearUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearUsActionPerformed
-        
+        newChat=new NewChat(getIp(), getPuerto(), getChat());
     }//GEN-LAST:event_jbCrearUsActionPerformed
 
     
@@ -167,13 +164,17 @@ public class NewUser extends javax.swing.JFrame {
             }
         });
     }
-    public String getText()
+    public String getPuerto()
     {
-        return this.jtNombreUs.getText();
+        return this.jtPuerto.getText();
     }
-    public void setText(String p)
+    public String getChat()
     {
-        this.jtNombreUs.setText(p);
+        return chat=this.jtNombreUs.getText()+",";
+    }
+    public String getIp()
+    {
+        return this.jtIp.getText();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

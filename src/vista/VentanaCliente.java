@@ -19,6 +19,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         initComponents();
         chat=miChat;
         lista=chat.split(",");
+        setNombreChat();
         cliente= new Cliente(peMsg, chat);
         Thread hilo = new Thread(cliente);
         hilo.start();
@@ -103,7 +104,6 @@ public class VentanaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEnviarActionPerformed
-        setNombreChat();
         enviar();
     }//GEN-LAST:event_jbEnviarActionPerformed
 
@@ -153,11 +153,11 @@ public class VentanaCliente extends javax.swing.JFrame {
     
     public void setNombreChat()
     {
-        this.jtNombreChat.setText(lista[0]);
+        this.jtNombreChat.setText(lista[1]);
     }
     public void enviar()
     {
-        cliente.enviarMsj(this.jtNombreChat.getText()+", <"+this.jtMensajeEnv.getText()+">");
+        cliente.enviarMsj(this.jtNombreChat.getText()+","+this.lista[1]+":<"+this.jtMensajeEnv.getText()+">");
     }
     
 

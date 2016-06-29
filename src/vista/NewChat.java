@@ -18,66 +18,48 @@ public class NewChat extends javax.swing.JFrame {
     /**
      * Creates new form NewChat
      */
-    
+    private VentanaCliente ventCliente;
     private ButtonGroup grupo;
-    
-    public NewChat() {
+    private String integrantes, chat, valor; 
+    public NewChat(String ip, String puerto, String miChat) {
         initComponents();
+        chat=miChat;
+        setVisible(true);
         ButtonGroup grupo= new ButtonGroup();
         grupo.add(jRadioButton1);
         grupo.add(jRadioButton2);
 	grupo.add(jRadioButton3);
     }
-
-    
-    
-    
-    public void agregarEvento(java.awt.event.ActionEvent evt){
-         String nombre;
-         String integrante;
-        nombre = jTextField1.getText();
-        if(nombre.trim().length() == 0)
-            JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del chat a crear.");
-       
-        integrante = jTextField1.getText();
-        if(integrante.trim().length() == 0)
-            JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del integrante a agregar.");
-         
-
-        
-    }
-
-
-        public int Seleccionar()
-			{
-			   int valor=0;
-			   
-			if(jRadioButton1.isSelected()==true)
-			{
-                            String chat=this.jTextField1.getText()+","+this.jTextField2.getText();
-                            jRadioButton2.setEnabled(false);
-                            jRadioButton3.setEnabled(false);
-			}
-			else if(jRadioButton2.isSelected()==true)
-			{
-				jRadioButton1.setEnabled(false);
-                                jRadioButton3.setEnabled(false);//función chat grupal
-			}
-			else if(jRadioButton3.isSelected()==true)
-			{
-                            jRadioButton1.setEnabled(false);
-                            jRadioButton2.setEnabled(false);// función chat integrantes
-                        }	
-			return valor;
-		}
-    
-        private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) { 
-            
-            jRadioButton1.setEnabled(true);
-            jRadioButton2.setEnabled(true);
-            jRadioButton3.setEnabled(true);
+    public String seleccionar()
+    {
+        if(jRadioButton1.isSelected()==true)
+        {
+            valor=this.jTextField1.getText()+","+this.jTextField2.getText()+",";
+            jRadioButton2.setEnabled(false);
+            jRadioButton3.setEnabled(false);
         }
-        
+        else if(jRadioButton2.isSelected()==true)
+        {
+            valor=integrantes;
+            jRadioButton1.setEnabled(false);
+            jRadioButton3.setEnabled(false);//función chat grupal
+        }
+        else if(jRadioButton3.isSelected()==true)
+        {
+            valor="Difucion,";
+            jRadioButton1.setEnabled(false);
+            jRadioButton2.setEnabled(false);// función chat integrantes
+        }
+        return valor;
+    }
+    public void setIntegrantes(String mensaje)
+    {
+        integrantes+=mensaje;
+    }
+    public String setChat()
+    {
+        return chat+=this.jTextField1.getText()+","+seleccionar();
+    }
         /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,6 +104,11 @@ public class NewChat extends javax.swing.JFrame {
         jLabel2.setText("Agregar Nuevo Integrante:");
 
         jButton1.setText("Agregar Integrante");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Crear Chat");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +123,11 @@ public class NewChat extends javax.swing.JFrame {
         jLabel4.setText("Seleccione el chat de su preferencia:");
 
         jButton3.setText("Limpiar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,8 +202,18 @@ public class NewChat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        ventCliente=new VentanaCliente(setChat());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        setIntegrantes(this.jTextField1.getText()+",");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jRadioButton1.setEnabled(true);
+        jRadioButton2.setEnabled(true);
+        jRadioButton3.setEnabled(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,7 +245,6 @@ public class NewChat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewChat().setVisible(true);
             }
         });
     }

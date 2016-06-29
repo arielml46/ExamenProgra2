@@ -9,9 +9,11 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
+
 
 /**
  *
@@ -23,13 +25,17 @@ public class HiloServidor implements Runnable {
         private Socket socket;
         private DataInputStream in;
         private DataOutputStream out;
-  
         private LinkedList<Socket> usuarios = new LinkedList<Socket>();   
+        private ArrayList lista;
+        private Map<String, lista> nombreMap;
+        private String chat;
 
          public HiloServidor(Socket sock, LinkedList users){
              
              usuarios = users;
              socket= sock;
+             lista=new ArrayList<>();
+             nombreMap = new HashMap<String, lista>();
         }
          
         @Override
@@ -52,4 +58,5 @@ public class HiloServidor implements Runnable {
             } catch (IOException ex) {
             }
         }
+        
 }
