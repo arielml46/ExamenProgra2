@@ -24,18 +24,17 @@ public class HiloServidor implements Runnable {
     
         private Socket socket;
         private DataInputStream in;
-        private DataOutputStream out;
-        private LinkedList<Socket> usuarios = new LinkedList<Socket>();   
+        private DataOutputStream out; 
         private ArrayList lista;
-        private Map<String, lista> nombreMap;
         private String chat;
+        private HashMap nombreMap, sockets;
+        private int i;
 
-         public HiloServidor(Socket sock, LinkedList users){
-             
-             usuarios = users;
+         public HiloServidor(Socket sock,HashMap miNombreMap, HashMap miSockets){
+             nombreMap=miNombreMap;
+             sockets=miSockets;
              socket= sock;
              lista=new ArrayList<>();
-             nombreMap = new HashMap<String, lista>();
         }
          
         @Override
@@ -57,6 +56,10 @@ public class HiloServidor implements Runnable {
                 
             } catch (IOException ex) {
             }
+        }
+        public void imprimir()
+        {
+            for(i=0;i<)
         }
         
 }
